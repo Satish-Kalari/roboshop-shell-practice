@@ -67,7 +67,7 @@ cp /home/centos/roboshop-shell-practice/shipping.service /etc/systemd/system/shi
 VALIDATE $? "Coping shipping.serice to systemd"
 
 systemctl daemon-reload &>> $LOGFILE
-VALIDATE $? "daemon reload"
+VALIDATE $? "Daemon reload"
 
 systemctl enable shipping &>> $LOGFILE
 VALIDATE $? "Enabling shipping"
