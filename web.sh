@@ -54,3 +54,5 @@ VALIDATE $? "Coping robosho.conf to default.d"
 
 systemctl restart nginx &>> $LOGFILE
 VALIDATE $? "Restart Nginx Service" 
+
+netstat -lntp 

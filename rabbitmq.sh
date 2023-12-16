@@ -53,3 +53,5 @@ VALIDATE $? "Creating user and password for RabbitMQ"
 
 rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"  &>> $LOGFILE
 VALIDATE $? "Giving acess to user"
+
+netstat -lntp 

@@ -71,3 +71,5 @@ VALIDATE $? "Enabling payment"
 
 systemctl start payment &>> $LOGFILE
 VALIDATE $? "Starting payment"
+
+netstat -lntp 

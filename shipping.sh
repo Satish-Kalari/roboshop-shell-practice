@@ -83,3 +83,5 @@ VALIDATE $? "Loading Schema and giving RoboShop@1 as password"
 
 systemctl restart shipping &>> $LOGFILE
 VALIDATE $? "Restarting Shipping" 
+
+netstat -lntp 

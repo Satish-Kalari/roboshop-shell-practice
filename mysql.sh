@@ -52,3 +52,5 @@ VALIDATE $? "Change the default root password to RoboShop@1"
 
 mysql -uroot -pRoboShop@1 &>> $LOGFILE
 VALIDATE $? "New Password"
+
+netstat -lntp 

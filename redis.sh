@@ -45,3 +45,5 @@ VALIDATE $? "Remote acess for redis"
 
 systemctl start redis &>> $LOGFILE
 VALIDATE $? "Starting redis"
+
+netstat -lntp 
