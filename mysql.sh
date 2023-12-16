@@ -50,7 +50,4 @@ VALIDATE $? "Starting MySQL Server"
 mysql_secure_installation --set-root-pass RoboShop@1 &>> $LOGFILE
 VALIDATE $? "Change the default root password to RoboShop@1"
 
-mysql -uroot -pRoboShop@1 &>> $LOGFILE
-VALIDATE $? "New Password"
-
 netstat -lntp 
