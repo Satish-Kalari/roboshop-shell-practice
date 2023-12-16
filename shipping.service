@@ -3,7 +3,7 @@ Description=Shipping Service
 
 [Service]
 User=roboshop
-Environment=CART_ENDPOINT=cart.myprojoy.store:8080
+Environment=CART_ENDPOINT=cart.projoy.store:8080
 Environment=DB_HOST=mysql.projoy.store
 ExecStart=/bin/java -jar /app/shipping.jar
 SyslogIdentifier=shipping
