@@ -10,7 +10,7 @@ for i in "${INSTANCES[@]}"
 do
  # Check if instance exists
  INSTANCE_ID=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=$i" --query 'Reservations[].Instances[].InstanceId' --output text)
- if [ -z "$INSTANCE_ID" ]
+ if [ -z "$INSTANCE_ID" ] || [ $INSTANCE_STATE != "running" ]
  then
      # Instance does not exist, create it
      if [ $i == "monodb" ] || [ $i == "mysql" ] || [ $i == "shipping" ]
@@ -38,29 +38,20 @@ do
      {
          "Comment": "Creating a record set for cognito endpoint"
          ,"Changes": [{
-         "Action"           : "UPSERT" 
+         "Action"            : "UPSERT" 
          ,"ResourceRecordSet" : {
-            "Name"           : "'$i'.'$DOMAIN_NAME'"
-            ,"Type"          : "A"
-            ,"TTL"           : 1
-            ,"ResourceRecords" : [{
-               "Value"      : "'$IP_ADDRESS'"
-            }]
-        }
-        }]
-    }
-        '
+             "Name"            : "'$i'.'$DOMAIN_NAME'"
+             ,"Type"           : "A"
+             ,"TTL"            : 1
+             ,"ResourceRecords" : [{
+                "Value"       : "'$IP_ADDRESS'"
+             }]
+         }
+         }]
+     }
+         '
  else
-     # Check if instance is running
-     INSTANCE_STATE=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --query 'Reservations[].Instances[].State.Name' --output text)
-     if [ $INSTANCE_STATE != "running" ]
-     then
-         # Instance is not running, create it
-         echo "$i instance is not running, creating it."
-         # Your instance creation code here
-     else
-         # Instance is running, skip creation
-         echo "$i instance is already running, skipping creation."
-     fi
+     # Instance exists, skip creation
+     echo "$i instance already exists, skipping creation."
  fi
 done
