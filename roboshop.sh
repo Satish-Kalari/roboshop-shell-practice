@@ -3,7 +3,7 @@
 AMI=03265a0778a880afb #Amazon Machine Image (AMI) ID, here we used:Centos-8-DevOps-Practice, PASSWORD:DevOps321
 SG_ID=sg-021ca03b1fe657511 #Security group ID
 INSTANCES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "dispatch" "web")
-ZONE_ID=Z104317737D96UJVA7NEF
+ZONE_ID=Z052856235HX3UDODIJ0R
 DOMAIN_NAME="projoy.store"
 
 for i in "${INSTANCES[@]}"
