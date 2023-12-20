@@ -26,7 +26,7 @@ do
     {
         "Comment": "Creating a record set for cognito endpoint"
         ,"Changes": [{
-        "Action"              : "CREATE"
+        "Action"              : "CREATE" 
         ,"ResourceRecordSet"  : {
             "Name"              : "'$i'.'$DOMAIN_NAME'"
             ,"Type"             : "A"
@@ -41,3 +41,5 @@ do
 done
 
 #aws ec2 run-instances --image-id ami-03265a0778a880afb  --instance-type t2.micro --security-group-ids sg-021ca03b1fe657511
+
+#CREATE, DELETE, UPSERT
