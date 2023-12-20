@@ -42,4 +42,4 @@ done
 
 #aws ec2 run-instances --image-id ami-03265a0778a880afb  --instance-type t2.micro --security-group-ids sg-021ca03b1fe657511
 
-#CREATE, DELETE, UPSERT
+#CREATE, DELETE, UPSERT ---> for to crete , deltae or update route53 A records 
