@@ -10,12 +10,12 @@ for i in "${INSTANCES[@]}"
 do
     if [ $i == "monodb" ] || [ $i == "mysql" ] || [ $i == "shipping" ]
     then
-        INSTANCE_TYPE="t3.small"
+        INSTANCES_TYPE="t3.small"
     else
-        INSTANCE_TYPE="t2.micro"
+        INSTANCES_TYPE="t2.micro"
     fi
 
-     IP_ADDRESS=$(aws ec2 run-instances --image-id $AMI --instance-type $INSTANCE_TYPE --security-group-ids $SG_ID --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]" --query 'Instances[0].PrivateIpAddress' --output text)
+     IP_ADDRESS=$(aws ec2 run-instances --image-id $AMI --instance-type $INSTANCES_TYPE --security-group-ids $SG_ID --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]" --query 'Instances[0].PrivateIpAddress' --output text)
 
     echo "$i: $IP_ADDRESS"
 
@@ -26,7 +26,7 @@ do
     {
         "Comment": "Creating a record set for cognito endpoint"
         ,"Changes": [{
-        "Action"              : "CREATE"
+        "Action"              : "UPDATE"
         ,"ResourceRecordSet"  : {
             "Name"              : "'$i'.'$DOMAIN_NAME'"
             ,"Type"             : "A"
