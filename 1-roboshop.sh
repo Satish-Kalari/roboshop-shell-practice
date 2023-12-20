@@ -10,7 +10,7 @@ for i in "${INSTANCES[@]}"
 do
  # Check if instance exists
  INSTANCE_ID=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=$i" --query 'Reservations[].Instances[].InstanceId' --output text)
- if [ -z "$INSTANCE_ID" ]
+ if [ -z "$INSTANCE_ID" ] 
  then
      # Instance does not exist, create it
      if [ $i == "monodb" ] || [ $i == "mysql" ] || [ $i == "shipping" ]
