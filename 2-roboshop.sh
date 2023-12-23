@@ -47,8 +47,4 @@ do
         }]
     }
         '
- else
-    # Instance exists, skip creation
-    echo "$i instance already exists, skipping creation."
- fi
 done
